@@ -66,12 +66,12 @@ sed -i 's/ubus_parallel_req 2/ubus_parallel_req 6/g' feeds/packages/net/nginx/fi
 sed -i '/ubus_parallel_req/a\        ubus_script_timeout 300;' feeds/packages/net/nginx/files-luci-support/60_nginx-luci-support
 
 # nginx - config
-cp -rf ../OpenBox/doc/nginx/luci.locations ./feeds/packages/net/nginx/files-luci-support/
-cp -rf ../OpenBox/doc/nginx/uci.conf.template ./feeds/packages/net/nginx-util/files/
+cp -rf OpenBox/doc/nginx/luci.locations ./feeds/packages/net/nginx/files-luci-support/
+cp -rf OpenBox/doc/nginx/uci.conf.template ./feeds/packages/net/nginx-util/files/
 
 # opkg
 mkdir -p package/system/opkg/patches
-cp -rf ../OpenBox/opkg/* ./package/system/opkg/patches/
+cp -rf OpenBox/opkg/* ./package/system/opkg/patches/
 
 # uwsgi - fix timeout
 sed -i '$a cgi-timeout = 600' feeds/packages/net/uwsgi/files-luci-support/luci-*.ini
@@ -98,13 +98,13 @@ sed -i 's/env conf_inc/env conf_inc enable/g' feeds/packages/net/frp/files/frpc.
 sed -i "s/'conf_inc:list(string)'/& \\\\/" feeds/packages/net/frp/files/frpc.init
 sed -i "/conf_inc:list/a\\\t\t\'enable:bool:0\'" feeds/packages/net/frp/files/frpc.init
 sed -i '/procd_open_instance/i\\t\[ "$enable" -ne 1 \] \&\& return 1\n' feeds/packages/net/frp/files/frpc.init
-patch -p1 < ../OpenBox/luci/applications/luci-app-frpc/001-luci-app-frpc-hide-token.patch
-patch -p1 < ../OpenBox/luci/applications/luci-app-frpc/002-luci-app-frpc-add-enable-flag.patch
+patch -p1 < OpenBox/luci/applications/luci-app-frpc/001-luci-app-frpc-hide-token.patch
+patch -p1 < OpenBox/luci/applications/luci-app-frpc/002-luci-app-frpc-add-enable-flag.patch
 
 # natmap
 sed -i 's/log_stdout:bool:1/log_stdout:bool:0/g;s/log_stderr:bool:1/log_stderr:bool:0/g' feeds/packages/net/natmap/files/natmap.init
 pushd feeds/luci
-cat ../OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch | patch -p1
+cat OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch | patch -p1
 popd
 
 # samba4 - bump version
