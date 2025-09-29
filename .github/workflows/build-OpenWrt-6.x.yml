@@ -14,7 +14,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   # REPO_BRANCH: main
-  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
