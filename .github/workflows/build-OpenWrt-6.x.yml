@@ -27,7 +27,6 @@ jobs:
     strategy:
       matrix:
         REPO_BRANCH:
-          # - main
           - v24.10.3
         ARCHITECTURE:
           - armv8
