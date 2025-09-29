@@ -73,7 +73,7 @@ wget https://github.com/torvalds/linux/commit/1a3e9b7a6b09e8ab3d2af019e4a3926226
 wget https://github.com/torvalds/linux/commit/7eebd219feda99df8292a97faff895a5da8159d6.patch -O target/linux/generic/pending-6.6/999-3-7eebd21.patch
 
 # ppp_fix
-wget -qO - https://github.com/immortalwrt/immortalwrt/commit/9d852a0.patch | patch -p1
+wget -qO - https://github.com/immortalwrt/immortalwrt/commit/9d852a05bd50b1c332301eecbcac1fa71be637d6.patch | patch -p1
 
 ### Other Kernel Hack 部分 ###
 # make olddefconfig
