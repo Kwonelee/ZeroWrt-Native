@@ -36,19 +36,19 @@ cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefil
 # ================================================================
 # 移植RK3566示例，其他RK35xx可模仿
 # ================================================================
-# 增加jp-tvbox设备
-echo -e "\\ndefine Device/jp_jp-tvbox
+# 增加station-m2设备
+echo -e "\\ndefine Device/firefly_station-m2
 \$(call Device/Legacy/rk3566,\$(1))
-  DEVICE_VENDOR := Jp
-  DEVICE_MODEL := JP TVBOX
-  DEVICE_DTS := rk3568/rk3566-jp-tvbox
-  SUPPORTED_DEVICES += jp,jp-tvbox
-  DEVICE_PACKAGES := kmod-scsi-core
+  DEVICE_VENDOR := Firefly
+  DEVICE_MODEL := Station M2 / RK3566 ROC PC
+  DEVICE_DTS := rk3568/rk3566-roc-pc
+  SUPPORTED_DEVICES += firefly,rk3566-roc-pc firefly,station-m2
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
-TARGET_DEVICES += jp_jp-tvbox" >> target/linux/rockchip/image/legacy.mk
+TARGET_DEVICES += firefly_station-m2" >> target/linux/rockchip/image/armv8.mk
 
 # 复制dts到target/linux/rockchip/dts/rk3568
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts target/linux/rockchip/dts/rk3568/
 # ================================================================
 # RK35xx示例结束
 # ================================================================
