@@ -127,9 +127,9 @@ sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/smb.conf.te
 # aria2 & ariaNG
 rm -rf feeds/packages/net/ariang
 rm -rf feeds/luci/applications/luci-app-aria2
-git clone https://github.com/sbwml/ariang-nginx package/new/ariang-nginx
+#git clone https://github.com/sbwml/ariang-nginx package/new/ariang-nginx
 rm -rf feeds/packages/net/aria2
-git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
+#git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
 
 # airconnect
 git clone https://github.com/sbwml/luci-app-airconnect package/new/airconnect --depth=1
@@ -139,23 +139,23 @@ git clone https://github.com/sbwml/package_new_ftp package/new/ftp
 
 # SSRP & Passwall
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
-git clone -b openwrt-24.10 https://github.com/BlueStack-Sky/openwrt_helloworld package/new/helloworld
+#git clone -b openwrt-24.10 https://github.com/BlueStack-Sky/openwrt_helloworld package/new/helloworld
 
 # openlist
-git clone https://github.com/sbwml/luci-app-openlist2 package/new/openlist --depth=1
+#git clone https://github.com/sbwml/luci-app-openlist2 package/new/openlist --depth=1
 
 # qBittorrent
-git clone https://github.com/sbwml/luci-app-qbittorrent package/new/qbittorrent --depth=1
+#git clone https://github.com/sbwml/luci-app-qbittorrent package/new/qbittorrent --depth=1
 
 # unblockneteasemusic
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/new/luci-app-unblockneteasemusic --depth=1
-sed -i 's/解除网易云音乐播放限制/网易云音乐解锁/g' package/new/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
+#git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/new/luci-app-unblockneteasemusic --depth=1
+#sed -i 's/解除网易云音乐播放限制/网易云音乐解锁/g' package/new/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
 
 # Mosdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/new/mosdns --depth=1
+#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/new/mosdns --depth=1
 
 # OpenAppFilter
-git clone https://github.com/sbwml/OpenAppFilter --depth=1 package/new/OpenAppFilter -b v6
+#git clone https://github.com/sbwml/OpenAppFilter --depth=1 package/new/OpenAppFilter -b v6
 
 # iperf3
 sed -i "s/D_GNU_SOURCE/D_GNU_SOURCE -funroll-loops/g" feeds/packages/net/iperf3/Makefile
@@ -178,14 +178,14 @@ sed -i 's,frp 客户端,Frp 客户端,g' feeds/luci/applications/luci-app-frpc/p
 
 # luci-app-sqm
 rm -rf feeds/luci/applications/luci-app-sqm
-git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
+#git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
 
 # unzip
 rm -rf feeds/packages/utils/unzip
 git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/utils/unzip
 
 # lucky
-git clone https://github.com/gdy666/luci-app-lucky.git package/new/lucky
+#git clone https://github.com/gdy666/luci-app-lucky.git package/new/lucky
 
 # custom packages
 rm -rf feeds/packages/utils/coremark
@@ -193,7 +193,7 @@ git clone https://github.com/sbwml/openwrt_pkgs package/new/custom --depth=1
 rm -rf package/new/custom/luci-app-adguardhome
 
 # adguardhome
-git clone https://git.kejizero.online/zhao/luci-app-adguardhome package/new/luci-app-adguardhome 
+#git clone https://git.kejizero.online/zhao/luci-app-adguardhome package/new/luci-app-adguardhome 
 
 # argon
 git clone https://github.com/QuickWrt/luci-theme-argon package/new/luci-theme-argon
