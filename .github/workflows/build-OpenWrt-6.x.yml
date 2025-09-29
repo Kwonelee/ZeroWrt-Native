@@ -97,7 +97,7 @@ jobs:
         #git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
         
         git -c advice.detachedHead=false clone --depth=1 --quiet $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
-        git clone --depth=1 --quiet -b openwrt-24.10 https://github.com/immortalwrt/immortalwrt
+        git clone --depth=1 --quiet -b openwrt-24.10 https://github.com/immortalwrt/immortalwrt immortalwrt
         git clone --depth=1 --quiet -b openwrt-24.10 https://github.com/openwrt/openwrt openwrt_snap
         
         find ${{ env.WORKDIR }}/workdir/openwrt/package/* -maxdepth 0 ! -name 'firmware' ! -name 'kernel' ! -name 'base-files' ! -name 'Makefile' -exec rm -rf {} +
