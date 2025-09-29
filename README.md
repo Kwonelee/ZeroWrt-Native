@@ -5,3 +5,4 @@
 
 # 🙏Thanks
 - [QuickWrt](https://github.com/QuickWrt)
+- [openwrt](https://github.com/openwrt/openwrt)
