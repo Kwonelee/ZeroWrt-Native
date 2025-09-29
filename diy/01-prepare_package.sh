@@ -66,12 +66,12 @@ sed -i 's/ubus_parallel_req 2/ubus_parallel_req 6/g' feeds/packages/net/nginx/fi
 sed -i '/ubus_parallel_req/a\        ubus_script_timeout 300;' feeds/packages/net/nginx/files-luci-support/60_nginx-luci-support
 
 # nginx - config
-cp -rf OpenBox/doc/nginx/luci.locations ./feeds/packages/net/nginx/files-luci-support/
-cp -rf OpenBox/doc/nginx/uci.conf.template ./feeds/packages/net/nginx-util/files/
+cp -rf ../OpenBox/doc/nginx/luci.locations ./feeds/packages/net/nginx/files-luci-support/
+cp -rf ../OpenBox/doc/nginx/uci.conf.template ./feeds/packages/net/nginx-util/files/
 
 # opkg
 mkdir -p package/system/opkg/patches
-cp -rf OpenBox/opkg/* ./package/system/opkg/patches/
+cp -rf ../OpenBox/opkg/* ./package/system/opkg/patches/
 
 # uwsgi - fix timeout
 sed -i '$a cgi-timeout = 600' feeds/packages/net/uwsgi/files-luci-support/luci-*.ini
@@ -98,13 +98,13 @@ sed -i 's/env conf_inc/env conf_inc enable/g' feeds/packages/net/frp/files/frpc.
 sed -i "s/'conf_inc:list(string)'/& \\\\/" feeds/packages/net/frp/files/frpc.init
 sed -i "/conf_inc:list/a\\\t\t\'enable:bool:0\'" feeds/packages/net/frp/files/frpc.init
 sed -i '/procd_open_instance/i\\t\[ "$enable" -ne 1 \] \&\& return 1\n' feeds/packages/net/frp/files/frpc.init
-patch -p1 < OpenBox/luci/applications/luci-app-frpc/001-luci-app-frpc-hide-token.patch
-patch -p1 < OpenBox/luci/applications/luci-app-frpc/002-luci-app-frpc-add-enable-flag.patch
+patch -p1 < ../OpenBox/luci/applications/luci-app-frpc/001-luci-app-frpc-hide-token.patch
+patch -p1 < ../OpenBox/luci/applications/luci-app-frpc/002-luci-app-frpc-add-enable-flag.patch
 
 # natmap
 sed -i 's/log_stdout:bool:1/log_stdout:bool:0/g;s/log_stderr:bool:1/log_stderr:bool:0/g' feeds/packages/net/natmap/files/natmap.init
 pushd feeds/luci
-cat OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch | patch -p1
+cat ../OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch | patch -p1
 popd
 
 # samba4 - bump version
@@ -127,9 +127,9 @@ sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/smb.conf.te
 # aria2 & ariaNG
 rm -rf feeds/packages/net/ariang
 rm -rf feeds/luci/applications/luci-app-aria2
-#git clone https://github.com/sbwml/ariang-nginx package/new/ariang-nginx
+git clone https://github.com/sbwml/ariang-nginx package/new/ariang-nginx
 rm -rf feeds/packages/net/aria2
-#git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
+git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
 
 # airconnect
 git clone https://github.com/sbwml/luci-app-airconnect package/new/airconnect --depth=1
@@ -139,23 +139,23 @@ git clone https://github.com/sbwml/package_new_ftp package/new/ftp
 
 # SSRP & Passwall
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
-#git clone -b openwrt-24.10 https://github.com/BlueStack-Sky/openwrt_helloworld package/new/helloworld
+git clone -b openwrt-24.10 https://github.com/BlueStack-Sky/openwrt_helloworld package/new/helloworld
 
 # openlist
-#git clone https://github.com/sbwml/luci-app-openlist2 package/new/openlist --depth=1
+git clone https://github.com/sbwml/luci-app-openlist2 package/new/openlist --depth=1
 
 # qBittorrent
-#git clone https://github.com/sbwml/luci-app-qbittorrent package/new/qbittorrent --depth=1
+git clone https://github.com/sbwml/luci-app-qbittorrent package/new/qbittorrent --depth=1
 
 # unblockneteasemusic
-#git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/new/luci-app-unblockneteasemusic --depth=1
-#sed -i 's/解除网易云音乐播放限制/网易云音乐解锁/g' package/new/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
+git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/new/luci-app-unblockneteasemusic --depth=1
+sed -i 's/解除网易云音乐播放限制/网易云音乐解锁/g' package/new/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
 
 # Mosdns
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/new/mosdns --depth=1
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/new/mosdns --depth=1
 
 # OpenAppFilter
-#git clone https://github.com/sbwml/OpenAppFilter --depth=1 package/new/OpenAppFilter -b v6
+git clone https://github.com/sbwml/OpenAppFilter --depth=1 package/new/OpenAppFilter -b v6
 
 # iperf3
 sed -i "s/D_GNU_SOURCE/D_GNU_SOURCE -funroll-loops/g" feeds/packages/net/iperf3/Makefile
@@ -178,14 +178,14 @@ sed -i 's,frp 客户端,Frp 客户端,g' feeds/luci/applications/luci-app-frpc/p
 
 # luci-app-sqm
 rm -rf feeds/luci/applications/luci-app-sqm
-#git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
+git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
 
 # unzip
 rm -rf feeds/packages/utils/unzip
 git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/utils/unzip
 
 # lucky
-#git clone https://github.com/gdy666/luci-app-lucky.git package/new/lucky
+git clone https://github.com/gdy666/luci-app-lucky.git package/new/lucky
 
 # custom packages
 rm -rf feeds/packages/utils/coremark
@@ -193,7 +193,7 @@ git clone https://github.com/sbwml/openwrt_pkgs package/new/custom --depth=1
 rm -rf package/new/custom/luci-app-adguardhome
 
 # adguardhome
-#git clone https://git.kejizero.online/zhao/luci-app-adguardhome package/new/luci-app-adguardhome 
+git clone https://git.kejizero.online/zhao/luci-app-adguardhome package/new/luci-app-adguardhome 
 
 # argon
 git clone https://github.com/QuickWrt/luci-theme-argon package/new/luci-theme-argon
