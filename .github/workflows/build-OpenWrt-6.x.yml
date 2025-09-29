@@ -111,7 +111,7 @@ jobs:
         cp -rf ${{ env.WORKDIR }}/workdir/immortalwrt/package/boot/arm-trusted-firmware-rockchip ${{ env.WORKDIR }}/workdir/openwrt/package/boot/arm-trusted-firmware-rockchip
 
         git clone --depth=1 --quiet -b main https://github.com/QuickWrt/OpenBox
-        cp -rf ./OpenBox/doc/feeds/feeds.conf.default ./openwrt/feeds.conf.default
+        cp -rf ${{ env.WORKDIR }}/workdir/OpenBox/doc/feeds/feeds.conf.default ${{ env.WORKDIR }}/workdir/openwrt/feeds.conf.default
         
         ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
