@@ -104,7 +104,7 @@ patch -p1 < ../OpenBox/luci/applications/luci-app-frpc/002-luci-app-frpc-add-ena
 # natmap
 sed -i 's/log_stdout:bool:1/log_stdout:bool:0/g;s/log_stderr:bool:1/log_stderr:bool:0/g' feeds/packages/net/natmap/files/natmap.init
 pushd feeds/luci
-cat ../../OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch | patch -p1
+patch -p1 <../../../OpenBox/luci/applications/luci-app-natmap/0001-luci-app-natmap-add-default-STUN-server-lists.patch
 popd
 
 # samba4 - bump version
