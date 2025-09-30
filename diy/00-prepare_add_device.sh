@@ -44,7 +44,7 @@ echo -e "\\ndefine Device/firefly_station-m2
   DEVICE_ALT0_VENDOR := Firefly
   DEVICE_ALT0_MODEL := RK3566 ROC PC
   SOC := rk3566
-  DEVICE_DTS := rk3568/rk3566-roc-pc
+  DEVICE_DTS := rockchip/rk3566-roc-pc
   SUPPORTED_DEVICES += firefly,rk3566-roc-pc firefly,station-m2
   UBOOT_DEVICE_NAME := station-m2-rk3566
   BOOT_FLOW := pine64-img
@@ -52,9 +52,13 @@ echo -e "\\ndefine Device/firefly_station-m2
 endef
 TARGET_DEVICES += firefly_station-m2" >> target/linux/rockchip/image/armv8.mk
 
-# 复制dts到target/linux/rockchip/dts/rk3568
-mkdir -p target/linux/rockchip/dts/rk3568
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts target/linux/rockchip/dts/rk3568/
+# 复制dts与配置文件到package/boot/uboot-rockchip
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/{rk3566.dtsi,rk3568-pinctrl.dtsi,rk356x.dtsi,rockchip-pinconf.dtsi,rk3566-roc-pc.dts} package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3566-station-m2-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig package/boot/uboot-rockchip/src/configs/
+
+# 复制dts到files/arch/arm64/boot/dts/rockchip
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/{rk3566.dtsi,rk3568-pinctrl.dtsi,rk356x.dtsi,rockchip-pinconf.dtsi,rk3566-roc-pc.dts} target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
 # ================================================================
 # RK35xx示例结束
 # ================================================================
