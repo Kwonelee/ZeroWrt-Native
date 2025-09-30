@@ -1,7 +1,7 @@
 # OpenWrt-Native
 
 # 🤔Introduce
-> **For self-study only**
+> **For testing only**
 
 # 🙏Thanks
 - [QuickWrt](https://github.com/QuickWrt/QuickWrt)
