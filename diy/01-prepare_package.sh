@@ -177,8 +177,8 @@ sed -i 's,frp 服务器,Frp 服务器,g' feeds/luci/applications/luci-app-frps/p
 sed -i 's,frp 客户端,Frp 客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
 
 # luci-app-sqm
-rm -rf feeds/luci/applications/luci-app-sqm
-git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
+#rm -rf feeds/luci/applications/luci-app-sqm
+#git clone https://git.kejizero.online/zhao/luci-app-sqm feeds/luci/applications/luci-app-sqm
 
 # unzip
 rm -rf feeds/packages/utils/unzip
