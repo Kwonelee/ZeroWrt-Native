@@ -48,6 +48,7 @@ endef
 TARGET_DEVICES += firefly_station-m2" >> target/linux/rockchip/image/armv8.mk
 
 # 复制dts到target/linux/rockchip/dts/rk3568
+mkdir -p target/linux/rockchip/dts/rk3568
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts target/linux/rockchip/dts/rk3568/
 # ================================================================
 # RK35xx示例结束
