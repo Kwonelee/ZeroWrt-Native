@@ -141,7 +141,7 @@ jobs:
         [ -e $CONFIG_FILE_PATH ] && mv $CONFIG_FILE_PATH openwrt/$CONFIG_FILE
         chmod +x diy/*.sh
         cd openwrt
-        #$GITHUB_WORKSPACE/diy/00-prepare_add_device.sh
+        $GITHUB_WORKSPACE/diy/00-prepare_add_device.sh
         $GITHUB_WORKSPACE/diy/00-prepare_base.sh
         $GITHUB_WORKSPACE/diy/01-prepare_package.sh
         $GITHUB_WORKSPACE/diy/02-rockchip_target_only.sh
