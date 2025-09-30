@@ -45,30 +45,6 @@
 		spi3 = &spi3;
 	};
 
-	reserved_memory: reserved-memory {
-		#address-cells = <2>;
-		#size-cells = <2>;
-		ranges;
-
-		rknpu_reserved: rknpu {
-			compatible = "shared-dma-pool";
-			inactive;
-			reusable;
-			size = <0x0 0x20000000>;
-			alignment = <0x0 0x1000>;
-			status = "disabled";
-		};
-
-		ramoops: ramoops@110000 {
-			compatible = "ramoops";
-			reg = <0x0 0x110000 0x0 0xf0000>;
-			record-size = <0x20000>;
-			console-size = <0x80000>;
-			ftrace-size = <0x00000>;
-			pmsg-size = <0x50000>;
-		};
-	};
-
 	cpus {
 		#address-cells = <2>;
 		#size-cells = <0>;
@@ -81,6 +57,13 @@
 			#cooling-cells = <2>;
 			enable-method = "psci";
 			operating-points-v2 = <&cpu0_opp_table>;
+			i-cache-size = <0x8000>;
+			i-cache-line-size = <64>;
+			i-cache-sets = <128>;
+			d-cache-size = <0x8000>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <128>;
+			next-level-cache = <&l3_cache>;
 		};
 
 		cpu1: cpu@100 {
@@ -90,6 +73,13 @@
 			#cooling-cells = <2>;
 			enable-method = "psci";
 			operating-points-v2 = <&cpu0_opp_table>;
+			i-cache-size = <0x8000>;
+			i-cache-line-size = <64>;
+			i-cache-sets = <128>;
+			d-cache-size = <0x8000>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <128>;
+			next-level-cache = <&l3_cache>;
 		};
 
 		cpu2: cpu@200 {
@@ -99,6 +89,13 @@
 			#cooling-cells = <2>;
 			enable-method = "psci";
 			operating-points-v2 = <&cpu0_opp_table>;
+			i-cache-size = <0x8000>;
+			i-cache-line-size = <64>;
+			i-cache-sets = <128>;
+			d-cache-size = <0x8000>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <128>;
+			next-level-cache = <&l3_cache>;
 		};
 
 		cpu3: cpu@300 {
@@ -108,7 +105,27 @@
 			#cooling-cells = <2>;
 			enable-method = "psci";
 			operating-points-v2 = <&cpu0_opp_table>;
+			i-cache-size = <0x8000>;
+			i-cache-line-size = <64>;
+			i-cache-sets = <128>;
+			d-cache-size = <0x8000>;
+			d-cache-line-size = <64>;
+			d-cache-sets = <128>;
+			next-level-cache = <&l3_cache>;
 		};
+	};
+
+	/*
+	 * There are no private per-core L2 caches, but only the
+	 * L3 cache that appears to the CPU cores as L2 caches
+	 */
+	l3_cache: l3-cache {
+		compatible = "cache";
+		cache-level = <2>;
+		cache-unified;
+		cache-size = <0x80000>;
+		cache-line-size = <64>;
+		cache-sets = <512>;
 	};
 
 	cpu0_opp_table: opp-table-0 {
@@ -339,20 +356,25 @@
 
 	gic: interrupt-controller@fd400000 {
 		compatible = "arm,gic-v3";
+		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+		      <0x0 0xfd460000 0 0x80000>; /* GICR */
+		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
 		#interrupt-cells = <3>;
+		mbi-alias = <0x0 0xfd410000>;
+		mbi-ranges = <296 24>;
+		msi-controller;
+		ranges;
 		#address-cells = <2>;
 		#size-cells = <2>;
-		ranges;
-		interrupt-controller;
+		dma-noncoherent;
 
-		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
-		      <0x0 0xfd460000 0 0xc0000>; /* GICR */
-		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-		its: interrupt-controller@fd440000 {
+		its: msi-controller@fd440000 {
 			compatible = "arm,gic-v3-its";
+			reg = <0x0 0xfd440000 0 0x20000>;
+			dma-noncoherent;
 			msi-controller;
 			#msi-cells = <1>;
-			reg = <0x0 0xfd440000 0x0 0x20000>;
 		};
 	};
 
@@ -397,12 +419,6 @@
 			 <&cru PCLK_USB>;
 		phys = <&usb2phy1_host>;
 		phy-names = "usb";
-		status = "disabled";
-	};
-
-	xpcs: syscon@fda00000 {
-		compatible = "rockchip,rk3568-xpcs", "syscon";
-		reg = <0x0 0xfda00000 0x0 0x200000>;
 		status = "disabled";
 	};
 
@@ -998,13 +1014,6 @@
 		reg = <0x0 0xfe1a8100 0x0 0x20>;
 	};
 
-	dfi: dfi@fe230000 {
-		compatible = "rockchip,rk3568-dfi";
-		reg = <0x00 0xfe230000 0x00 0x400>;
-		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
-		rockchip,pmu = <&pmugrf>;
-	};
-
 	pcie2x1: pcie@fe260000 {
 		compatible = "rockchip,rk3568-pcie";
 		reg = <0x3 0xc0000000 0x0 0x00400000>,
@@ -1109,16 +1118,13 @@
 		status = "disabled";
 	};
 
-	crypto: crypto@fe380000 {
-		compatible = "rockchip,rk3568-crypto";
-		reg = <0x0 0xfe380000 0x0 0x2000>;
-		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cru ACLK_CRYPTO_NS>, <&cru HCLK_CRYPTO_NS>,
-			 <&cru CLK_CRYPTO_NS_CORE>;
-		clock-names = "aclk", "hclk", "core";
-		resets = <&cru SRST_CRYPTO_NS_CORE>;
-		reset-names = "core";
-		status = "okay";
+	rng: rng@fe388000 {
+		compatible = "rockchip,rk3568-rng";
+		reg = <0x0 0xfe388000 0x0 0x4000>;
+		clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
+		clock-names = "core", "ahb";
+		resets = <&cru SRST_TRNG_NS>;
+		status = "disabled";
 	};
 
 	i2s0_8ch: i2s@fe400000 {
@@ -1864,15 +1870,6 @@
 			#phy-cells = <0>;
 			status = "disabled";
 		};
-	};
-
-	rng: rng@fe388000 {
-		compatible = "rockchip,rk3568-rng";
-		reg = <0x0 0xfe388000 0x0 0x4000>;
-		clocks = <&cru CLK_TRNG_NS>, <&cru HCLK_TRNG_NS>;
-		clock-names = "trng_clk", "trng_hclk";
-		resets = <&cru SRST_TRNG_NS>;
-		reset-names = "reset";
 	};
 
 	pinctrl: pinctrl {
