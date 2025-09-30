@@ -24,7 +24,7 @@ git clone https://github.com/sbwml/luci-app-quickfile package/new/quickfile
 #git clone https://github.com/sbwml/luci-app-airplay2 package/new/airplay2
 
 # luci-app-webdav
-git clone https://github.com/sbwml/luci-app-webdav package/new/luci-app-webdav
+#git clone https://github.com/sbwml/luci-app-webdav package/new/luci-app-webdav
 
 # ddns - fix boot
 sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
