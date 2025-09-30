@@ -1,10 +1,10 @@
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -57,6 +57,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
+@@ -38,6 +38,7 @@
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-eaidk-610.dtb
 +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-tvi3315a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353p.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353ps.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-ficus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-firefly.dtb
