@@ -132,7 +132,7 @@ rm -rf feeds/packages/net/aria2
 #git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
 
 # airconnect
-git clone https://github.com/sbwml/luci-app-airconnect package/new/airconnect --depth=1
+#git clone https://github.com/sbwml/luci-app-airconnect package/new/airconnect --depth=1
 
 # netkit-ftp
 git clone https://github.com/sbwml/package_new_ftp package/new/ftp
