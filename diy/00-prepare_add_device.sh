@@ -38,7 +38,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefil
 # ================================================================
 # 增加station-m2设备
 echo -e "\\ndefine Device/firefly_station-m2
-\$(call Device/Legacy/rk3566,\$(1))
+\$(call Device/radxa_rock-3c,\$(1))
   DEVICE_VENDOR := Firefly
   DEVICE_MODEL := Station M2 / RK3566 ROC PC
   DEVICE_DTS := rk3568/rk3566-roc-pc
