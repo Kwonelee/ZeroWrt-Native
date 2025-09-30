@@ -27,7 +27,7 @@ git clone https://github.com/sbwml/luci-app-quickfile package/new/quickfile
 #git clone https://github.com/sbwml/luci-app-webdav package/new/luci-app-webdav
 
 # ddns - fix boot
-sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
+#sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
 
 # nlbwmon - disable syslog
 sed -i 's/stderr 1/stderr 0/g' feeds/packages/net/nlbwmon/files/nlbwmon.init
@@ -125,10 +125,10 @@ sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/samba.confi
 sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # aria2 & ariaNG
-rm -rf feeds/packages/net/ariang
-rm -rf feeds/luci/applications/luci-app-aria2
+#rm -rf feeds/packages/net/ariang
+#rm -rf feeds/luci/applications/luci-app-aria2
 #git clone https://github.com/sbwml/ariang-nginx package/new/ariang-nginx
-rm -rf feeds/packages/net/aria2
+#rm -rf feeds/packages/net/aria2
 #git clone https://github.com/sbwml/feeds_packages_net_aria2 -b 22.03 feeds/packages/net/aria2
 
 # airconnect
@@ -138,7 +138,7 @@ rm -rf feeds/packages/net/aria2
 git clone https://github.com/sbwml/package_new_ftp package/new/ftp
 
 # SSRP & Passwall
-rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
+#rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
 #git clone -b openwrt-24.10 https://github.com/QuickWrt/openwrt_helloworld package/new/helloworld
 
 # openlist
