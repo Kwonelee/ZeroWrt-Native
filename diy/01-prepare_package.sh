@@ -21,7 +21,7 @@ git clone https://github.com/sbwml/package_new_istore package/new/linkease
 git clone https://github.com/sbwml/luci-app-quickfile package/new/quickfile
 
 # luci-app-airplay2
-git clone https://github.com/sbwml/luci-app-airplay2 package/new/airplay2
+#git clone https://github.com/sbwml/luci-app-airplay2 package/new/airplay2
 
 # luci-app-webdav
 git clone https://github.com/sbwml/luci-app-webdav package/new/luci-app-webdav
