@@ -97,7 +97,7 @@ jobs:
         git clone --depth=1 -b openwrt-24.10 $REPO_URL openwrt_snap
         
         echo "正在克隆 OpenBox 仓库以支持后续编译"
-        git clone --depth=1 -b main https://github.com/QuickWrt/OpenBox
+        git clone --depth=1 -b main https://github.com/Kwonelee/OpenBox OpenBox
         
         echo "正在进行源代码处理..."
         find ${{ env.WORKDIR }}/workdir/openwrt/package/* -maxdepth 0 ! -name 'firmware' ! -name 'kernel' ! -name 'base-files' ! -name 'Makefile' -exec rm -rf {} +
