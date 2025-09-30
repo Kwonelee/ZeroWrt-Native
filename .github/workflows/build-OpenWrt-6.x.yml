@@ -114,6 +114,10 @@ jobs:
         echo "替换feeds.conf.default..."
         cp -rf ${{ env.WORKDIR }}/workdir/OpenBox/doc/feeds/feeds.conf.default ${{ env.WORKDIR }}/workdir/openwrt/feeds.conf.default
         
+        echo "移除多余文件..."
+        rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap
+        rm -rf ${{ env.WORKDIR }}/workdir/immortalwrt
+        
         ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 缓存构建动作
