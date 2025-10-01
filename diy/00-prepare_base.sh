@@ -84,11 +84,11 @@ cp -rf ../OpenBox/kernel-6.6/igc-fix/* ./target/linux/x86/patches-6.6/
 cp -rf ../OpenBox/kernel-6.6/btf/* ./target/linux/generic/hack-6.6/
 
 ### 个性化修改 ###
-sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
+#sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
 
 sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
 
-cp -rf ../OpenBox/doc/base-files/etc/banner ./package/base-files/files/etc/banner
+#cp -rf ../OpenBox/doc/base-files/etc/banner ./package/base-files/files/etc/banner
 
 # luci-mod extra
 pushd feeds/luci
