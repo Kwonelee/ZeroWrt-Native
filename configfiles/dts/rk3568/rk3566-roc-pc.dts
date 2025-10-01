@@ -9,7 +9,7 @@
 
 / {
 	model = "Firefly Station M2";
-	compatible = "firefly,rk3566-roc-pc", "rockchip,rk3566";
+	compatible = "firefly,station-m2", "rockchip,rk3566";
 
 	aliases {
 		ethernet0 = &gmac1;
