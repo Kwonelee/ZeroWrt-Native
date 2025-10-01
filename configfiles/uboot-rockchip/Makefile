@@ -191,7 +191,7 @@ define U-Boot/rk3566/Default
   TPL:=$(RK3566_TPL)
 endef
 
-define U-Boot/station-m2-rk3566
+define U-Boot/roc-pc-rk3566
   $(U-Boot/rk3566/Default)
   NAME:=Station M2
   BUILD_DEVICES:= \
