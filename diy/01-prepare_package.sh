@@ -12,7 +12,7 @@ rm -rf feeds/packages/lang/node
 git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node -b packages-24.10
 
 # default settings
-git clone https://github.com/QuickWrt/default-settings package/new/default-settings -b openwrt-24.10
+git clone https://github.com/Kwonelee/default-settings package/new/default-settings -b openwrt-24.10
 
 # linkease
 git clone https://github.com/sbwml/package_new_istore package/new/linkease
