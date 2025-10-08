@@ -45,7 +45,7 @@ echo -e "\\ndefine Device/firefly_station-m2
   DEVICE_ALT0_MODEL := RK3566 ROC PC
   SOC := rk3566
   DEVICE_DTS := rockchip/rk3566-roc-pc
-  SUPPORTED_DEVICES += firefly,rk3566-roc-pc firefly,station-m2
+  SUPPORTED_DEVICES += firefly,station-m2 firefly,rk3566-roc-pc
   UBOOT_DEVICE_NAME := station-m2-rk3566
   BOOT_FLOW := pine64-img
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
