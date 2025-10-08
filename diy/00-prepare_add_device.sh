@@ -21,11 +21,14 @@ TARGET_DEVICES += tvi_tvi3315a" >> target/linux/rockchip/image/armv8.mk
 cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile package/boot/uboot-rockchip/Makefile
 
 # 复制dts与配置文件到package/boot/uboot-rockchip
+mkdir -p package/boot/uboot-rockchip/src/arch/arm/dts
+mkdir -p package/boot/uboot-rockchip/src/configs
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/rk3399-tvi3315a.dts package/boot/uboot-rockchip/src/arch/arm/dts/
 cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3399-tvi3315a-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
 cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/tvi3315a-rk3399_defconfig package/boot/uboot-rockchip/src/configs/
 
 # 复制dts到files/arch/arm64/boot/dts/rockchip
+mkdir -p target/linux/rockchip/files/arch/arm64/boot/dts/rockchip
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/rk3399-tvi3315a.dts target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
 
 # 添加dtb补丁到target/linux/rockchip/patches-6.6
