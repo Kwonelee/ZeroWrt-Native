@@ -32,7 +32,8 @@ mkdir -p target/linux/rockchip/files/arch/arm64/boot/dts/rockchip
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/rk3399-tvi3315a.dts target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
 
 # 添加dtb补丁到target/linux/rockchip/patches-6.6
-cp -f $GITHUB_WORKSPACE/configfiles/patch/999-add-rk3399-tvi3315a-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
+cp -f $GITHUB_WORKSPACE/configfiles/linux-rockchip/Makefile target/linux/rockchip/Makefile
+cp -f $GITHUB_WORKSPACE/configfiles/patch/211-rockchip-rk3399-add-support-more-devices.patch target/linux/rockchip/patches-6.6/211-rockchip-rk3399-add-support-more-devices.patch
 # ================================================================
 # RK3399示例结束
 # ================================================================
