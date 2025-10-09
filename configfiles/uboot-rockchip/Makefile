@@ -326,6 +326,7 @@ define U-Boot/rock5a-rk3588s
 endef
 
 UBOOT_TARGETS := \
+  tvi3315a-rk3399 \
   nanopc-t4-rk3399 \
   nanopi-r4s-rk3399 \
   rock-4c-plus-rk3399 \
@@ -342,6 +343,7 @@ UBOOT_TARGETS := \
   rock64-rk3328 \
   rock-pi-e-rk3328 \
   rock-pi-e-v3-rk3328 \
+  station-m2-rk3566 \
   nanopi-r3s-rk3566 \
   radxa-cm3-io-rk3566 \
   radxa-zero-3-rk3566 \
