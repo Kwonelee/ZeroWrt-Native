@@ -218,7 +218,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.status == 'success' && !cancelled()
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag_name: ${{ steps.tag.outputs.release_tag }}-dev
         body_path: release.txt
         files: |
           ${{ env.FIRMWARE }}/*station-m2-squashfs-sysupgrade.img.gz
