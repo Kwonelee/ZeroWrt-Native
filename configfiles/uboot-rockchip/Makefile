@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_VERSION:=2024.10
-PKG_RELEASE:=7
+PKG_RELEASE:=1
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Sarah Maedel <openwrt@tbspace.de>
@@ -114,7 +114,7 @@ endef
 define U-Boot/rk3399/Default
   BUILD_SUBTARGET:=armv8
   DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3399
-  ATF:=rk3399_bl31.elf
+  ATF:=$(RK3399_ATF)
 endef
 
 define U-Boot/tvi3315a-rk3399
