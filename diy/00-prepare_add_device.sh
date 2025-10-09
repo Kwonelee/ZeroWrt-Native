@@ -13,7 +13,7 @@ echo -e "\\ndefine Device/tvi_tvi3315a
   DEVICE_MODEL := TVI3315A
   SOC := rk3399
   UBOOT_DEVICE_NAME := tvi3315a-rk3399
-  BOOT_FLOW := pine64-bin
+  BOOT_FLOW := pine64-img
 endef
 TARGET_DEVICES += tvi_tvi3315a" >> target/linux/rockchip/image/armv8.mk
 
