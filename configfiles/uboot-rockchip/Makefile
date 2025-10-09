@@ -7,7 +7,7 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_VERSION:=2024.10
 PKG_RELEASE:=1
-PKG_HASH:=b28daf4ac17e43156363078bf510297584137f6df50fced9b12df34f61a92fb0
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Sarah Maedel <openwrt@tbspace.de>
 
@@ -121,6 +121,13 @@ define U-Boot/rk3399/Default
   ATF:=rk3399_bl31.elf
 endef
 
+define U-Boot/tvi3315a-rk3399
+  $(U-Boot/rk3399/Default)
+  NAME:=TVI3315A
+  BUILD_DEVICES:= \
+    tvi_tvi3315a
+endef
+
 define U-Boot/nanopc-t4-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=NanoPC T4
@@ -172,6 +179,13 @@ define U-Boot/rk3566/Default
   DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3566
   ATF:=rk3568_bl31_v1.44.elf
   TPL:=rk3566_ddr_1056MHz_v1.21.bin
+endef
+
+define U-Boot/station-m2-rk3566
+  $(U-Boot/rk3566/Default)
+  NAME:=Station M2
+  BUILD_DEVICES:= \
+    firefly_station-m2
 endef
 
 define U-Boot/nanopi-r3s-rk3566
