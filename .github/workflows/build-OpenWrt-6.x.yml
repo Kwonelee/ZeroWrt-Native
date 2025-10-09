@@ -108,6 +108,7 @@ jobs:
         rm -rf ${{ env.WORKDIR }}/workdir/openwrt/package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
         rm -rf ${{ env.WORKDIR }}/workdir/openwrt/target/linux/rockchip
         cp -rf ${{ env.WORKDIR }}/workdir/lede/target/linux/rockchip ${{ env.WORKDIR }}/workdir/openwrt/target/linux/rockchip
+        cp -rf ${{ env.WORKDIR }}/workdir/lede/package/boot/rockchip-rkbin ${{ env.WORKDIR }}/workdir/openwrt/package/boot/rockchip-rkbin
         cp -rf ${{ env.WORKDIR }}/workdir/lede/package/boot/uboot-rockchip ${{ env.WORKDIR }}/workdir/openwrt/package/boot/uboot-rockchip
         cp -rf ${{ env.WORKDIR }}/workdir/lede/package/boot/arm-trusted-firmware-rockchip ${{ env.WORKDIR }}/workdir/openwrt/package/boot/arm-trusted-firmware-rockchip
         
