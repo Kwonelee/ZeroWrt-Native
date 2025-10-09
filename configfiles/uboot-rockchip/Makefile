@@ -8,7 +8,7 @@ include $(INCLUDE_DIR)/kernel.mk
 PKG_VERSION:=2025.07
 PKG_RELEASE:=1
 
-PKG_HASH:=0f933f6c5a426895bf306e93e6ac53c60870e4b54cda56d95211bec99e63bec7
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Tobias Maedel <openwrt@tbspace.de>
 
