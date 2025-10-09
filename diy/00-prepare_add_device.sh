@@ -13,8 +13,6 @@ echo -e "\\ndefine Device/tvi_tvi3315a
   DEVICE_MODEL := TVI3315A
   SOC := rk3399
   UBOOT_DEVICE_NAME := tvi3315a-rk3399
-  BOOT_FLOW := pine64-img
-  IMAGES := sysupgrade.img.gz
   IMAGE/sysupgrade.img.gz := boot-combined | boot-script | pine64-img | gzip | append-metadata
 endef
 TARGET_DEVICES += tvi_tvi3315a" >> target/linux/rockchip/image/armv8.mk
@@ -50,7 +48,7 @@ echo -e "\\ndefine Device/firefly_station-m2
   DEVICE_DTS := rockchip/rk3566-roc-pc
   SUPPORTED_DEVICES += firefly,station-m2 firefly,rk3566-roc-pc
   UBOOT_DEVICE_NAME := station-m2-rk3566
-  BOOT_FLOW := pine64-img
+  IMAGE/sysupgrade.img.gz := boot-common | boot-script | pine64-img | gzip | append-metadata
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
 TARGET_DEVICES += firefly_station-m2" >> target/linux/rockchip/image/armv8.mk
