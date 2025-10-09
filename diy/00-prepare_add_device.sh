@@ -14,6 +14,8 @@ echo -e "\\ndefine Device/tvi_tvi3315a
   SOC := rk3399
   UBOOT_DEVICE_NAME := tvi3315a-rk3399
   BOOT_FLOW := pine64-img
+  IMAGES := sysupgrade.img.gz
+  IMAGE/sysupgrade.img.gz := boot-combined | boot-script | pine64-img | gzip | append-metadata
 endef
 TARGET_DEVICES += tvi_tvi3315a" >> target/linux/rockchip/image/armv8.mk
 
