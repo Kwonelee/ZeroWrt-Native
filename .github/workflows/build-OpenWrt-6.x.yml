@@ -94,15 +94,15 @@ jobs:
         echo "开始克隆源代码仓库..."
         git clone --depth=1 -b ${{ matrix.REPO_BRANCH }} $REPO_URL openwrt
         #git clone --depth=1 -b openwrt-24.10 https://github.com/immortalwrt/immortalwrt immortalwrt
-        git clone --depth=1 -b openwrt-24.10 $REPO_URL openwrt_snap
+        #git clone --depth=1 -b openwrt-24.10 $REPO_URL openwrt_snap
         
         echo "正在克隆 OpenBox 仓库以支持后续编译"
         git clone --depth=1 -b main https://github.com/Kwonelee/OpenBox OpenBox
         
-        echo "正在进行源代码处理..."
-        find ${{ env.WORKDIR }}/workdir/openwrt/package/* -maxdepth 0 ! -name 'firmware' ! -name 'kernel' ! -name 'base-files' ! -name 'Makefile' -exec rm -rf {} +
-        rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/firmware ${{ env.WORKDIR }}/workdir/openwrt_snap/package/kernel ${{ env.WORKDIR }}/workdir/openwrt_snap/package/base-files ${{ env.WORKDIR }}/workdir/openwrt_snap/package/Makefile
-        cp -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/* ${{ env.WORKDIR }}/workdir/openwrt/package/
+        #echo "正在进行源代码处理..."
+        #find ${{ env.WORKDIR }}/workdir/openwrt/package/* -maxdepth 0 ! -name 'firmware' ! -name 'kernel' ! -name 'base-files' ! -name 'Makefile' -exec rm -rf {} +
+        #rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/firmware ${{ env.WORKDIR }}/workdir/openwrt_snap/package/kernel ${{ env.WORKDIR }}/workdir/openwrt_snap/package/base-files ${{ env.WORKDIR }}/workdir/openwrt_snap/package/Makefile
+        #cp -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/* ${{ env.WORKDIR }}/workdir/openwrt/package/
         
         #echo "为 Rockchip 架构替换 ImmortalWRT 组件以增强设备兼容性..."
         #rm -rf ${{ env.WORKDIR }}/workdir/openwrt/package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
@@ -114,8 +114,8 @@ jobs:
         echo "替换feeds.conf.default..."
         cp -rf ${{ env.WORKDIR }}/workdir/OpenBox/doc/feeds/feeds.conf.default ${{ env.WORKDIR }}/workdir/openwrt/feeds.conf.default
         
-        echo "移除多余文件..."
-        rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap
+        #echo "移除多余文件..."
+        #rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap
         #rm -rf ${{ env.WORKDIR }}/workdir/immortalwrt
         
         ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
