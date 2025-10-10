@@ -2,7 +2,7 @@
 
 ### 基础部分 ###
 # 使用 O2 级别的优化
-sed -i 's/Os/O2/g' include/target.mk
+#sed -i 's/Os/O2/g' include/target.mk
 
 # 内核版本设置
 #cp -rf ../OpenBox/kernel-6.6/kernel/0001-linux-module-video.patch ./package/0001-linux-module-video.patch
